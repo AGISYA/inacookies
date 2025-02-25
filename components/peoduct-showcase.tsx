@@ -1,4 +1,5 @@
 "use client";
+
 import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -6,6 +7,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useState } from "react";
+import Image from "next/image";
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  hoverImage: string;
+}
 
 const products = [
   {
@@ -65,7 +75,6 @@ const products = [
     hoverImage: "/images/30_SKU_IC_lebaran-10.webp",
   },
 ];
-
 export default function ProductShowcase() {
   return (
     <section className="py-8 bg-white text-black">
@@ -115,7 +124,7 @@ export default function ProductShowcase() {
   );
 }
 
-function ProductCard({ product }: { product: any }) {
+function ProductCard({ product }: { product: Product }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -124,9 +133,11 @@ function ProductCard({ product }: { product: any }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img
+      <Image
         src={isHovered ? product.hoverImage : product.image}
         alt={product.name}
+        width={300}
+        height={300}
         className="w-full h-52 sm:h-60 md:h-72 lg:h-80 object-cover transition-all duration-300"
       />
       <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center py-3">
