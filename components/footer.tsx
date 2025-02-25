@@ -1,115 +1,61 @@
+"use client";
 import Link from "next/link";
-import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
+import { FaInstagram, FaTiktok, FaFacebookF } from "react-icons/fa";
 
 export default function Footer() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-semibold mb-4">About Us</h3>
-            <p className="mb-4">
-              We are passionate about baking and delivering the finest quality
-              products to our customers.
-            </p>
-            <div className="flex items-center mb-2">
-              <FiMapPin className="mr-2" />
-              <p>123 Bakery Street, Cityville</p>
-            </div>
-            <div className="flex items-center mb-2">
-              <FiPhone className="mr-2" />
-              <p>+1 (555) 123-4567</p>
-            </div>
-            <div className="flex items-center">
-              <FiMail className="mr-2" />
-              <p>info@buckerbakery.com</p>
-            </div>
+    <footer id="contact" className="bg-gray-900 text-white py-10">
+      <div className="container mx-auto px-6 text-center">
+        {/* Brand & Deskripsi */}
+        <h2 className="text-2xl font-bold">INACOOKIES</h2>
+        <p className="text-sm text-gray-300 mt-2 max-w-md mx-auto">
+          Hubungi kami untuk informasi lebih lanjut!
+        </p>
+
+        {/* Navigasi Footer */}
+        <nav className="mt-6">
+          <ul className="flex flex-wrap justify-center gap-6 text-sm sm:text-base">
+            {[
+              { name: "Home", id: "hero" },
+              { name: "Packages", id: "shop" },
+              { name: "About Us", id: "about" },
+              { name: "Contact Us", id: "contact" },
+            ].map((item, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => scrollToSection(item.id)}
+                  className="hover:text-primary transition-transform duration-200"
+                >
+                  {item.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Ikuti Kami */}
+        <div className="mt-6">
+          <p className="text-gray-400 text-sm">Ikuti Kami</p>
+          <div className="flex justify-center mt-3 space-x-4">
+            <Link href="https://www.instagram.com" target="_blank">
+              <FaInstagram className="text-xl hover:text-primary transition duration-300" />
+            </Link>
+            <Link href="https://www.tiktok.com" target="_blank">
+              <FaTiktok className="text-xl hover:text-primary transition duration-300" />
+            </Link>
+            <Link href="https://www.facebook.com" target="_blank">
+              <FaFacebookF className="text-xl hover:text-primary transition duration-300" />
+            </Link>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul>
-              <li className="mb-2">
-                <Link href="/" className="hover:text-primary">
-                  Home
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/about" className="hover:text-primary">
-                  About Us
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/shop" className="hover:text-primary">
-                  Shop
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/blog" className="hover:text-primary">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-primary">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Our Products</h3>
-            <ul>
-              <li className="mb-2">
-                <Link href="/shop/bread" className="hover:text-primary">
-                  Bread
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/shop/pastries" className="hover:text-primary">
-                  Pastries
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/shop/cakes" className="hover:text-primary">
-                  Cakes
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/shop/cookies" className="hover:text-primary">
-                  Cookies
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/seasonal" className="hover:text-primary">
-                  Seasonal Specials
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Newsletter</h3>
-            <p className="mb-4">
-              Subscribe to our newsletter for updates and special offers.
-            </p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-primary-dark transition duration-300"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p>
-            &copy; {new Date().getFullYear()} Bucker Bakery. All rights
-            reserved.
-          </p>
         </div>
       </div>
     </footer>
