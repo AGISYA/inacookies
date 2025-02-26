@@ -18,7 +18,7 @@ export default function Header() {
   const menuItems = [
     { name: "Home", id: "hero", type: "scroll" },
     { name: "About", id: "about", type: "scroll" },
-    { name: "Product", href: "/Product", type: "link" },
+    { name: "Product", href: "/products", type: "link" },
     { name: "Advantages", id: "advantages", type: "scroll" },
     { name: "Contact", id: "contact", type: "scroll" },
   ];
