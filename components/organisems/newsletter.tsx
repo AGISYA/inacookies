@@ -9,14 +9,13 @@ export default function Newsletter() {
   const [email, setEmail] = useState("");
   const { toast } = useToast();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here you would typically send the email to your backend
     toast({
       title: "Subscribed!",
-      description: "Thank you for subscribing to our newsletter.",
+      description: "You have successfully subscribed to our newsletter.",
     });
-    setEmail("");
   };
 
   return (
