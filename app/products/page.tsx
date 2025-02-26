@@ -2,7 +2,7 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import FilterSidebar from "@/components/organisems/filter-sidebar";
+import FilterSidebar, { Filters } from "@/components/organisems/filter-sidebar";
 import Newsletter from "@/components/organisems/newsletter";
 import ProductGrid from "@/components/organisems/product-grid";
 import ProductShowcase from "@/components/peoduct-showcase";
