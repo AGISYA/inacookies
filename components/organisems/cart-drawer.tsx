@@ -1,8 +1,12 @@
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function CartDrawer({ isOpen, onClose }) {
-  // This would typically come from your global state management
+interface CartDrawerProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const cartItems = [
     {
       id: 1,
