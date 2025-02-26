@@ -17,8 +17,6 @@ const images = [
 const Carousel = () => {
   return (
     <div className="w-full h-[700px] mx-auto">
-      {" "}
-      {/* Ubah tinggi sesuai kebutuhan */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={0}
@@ -44,5 +42,4 @@ const Carousel = () => {
     </div>
   );
 };
-
 export default Carousel;
