@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-gray-900 text-white py-10">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-2xl font-bold">INACOOKIES</h2>
+        <h2 className="text-2xl font-bold">INACOOKIES 24 JAM</h2>
         <p className="text-sm text-gray-300 mt-2 max-w-md mx-auto">
           Hubungi kami untuk informasi lebih lanjut!
         </p>
