@@ -1,22 +1,33 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { FiSearch, FiHeart, FiShoppingBag } from "react-icons/fi";
+import { useRouter } from "next/navigation";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -80;
+      const yOffset = -80; // Sesuaikan agar tidak tertutup header
       const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
+  const handleHomeClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    if (window.location.pathname === "/") {
+      window.location.reload();
+    } else {
+      router.push("/");
+    }
+  };
+
   const menuItems = [
-    { name: "Home", id: "hero", type: "scroll" },
+    { name: "Home", href: "/", type: "home" },
     { name: "About", id: "about", type: "scroll" },
     { name: "Product", href: "/products", type: "link" },
     { name: "Advantages", id: "advantages", type: "scroll" },
@@ -24,29 +35,42 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white text-black fixed w-full z-50 shadow-md">
+    <header className="fixed top-0 left-0 w-full bg-white text-black shadow-md z-50">
       <div className="container mx-auto px-4">
         <div className="py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
+          <Link
+            href="/"
+            className="text-2xl font-bold"
+            onClick={handleHomeClick}
+          >
             inacookies
           </Link>
           <nav className="hidden md:block">
-            <ul className="flex space-x-6">
+            <ul className="flex space-x-6 text-black">
               {menuItems.map((item) =>
                 item.type === "link" ? (
                   <li key={item.name}>
                     <Link
                       href={item.href as string}
-                      className="hover:text-primary transition-transform duration-200"
+                      className="hover:text-yellow-400 transition-transform duration-200"
                     >
                       {item.name}
                     </Link>
+                  </li>
+                ) : item.type === "home" ? (
+                  <li key={item.name}>
+                    <button
+                      onClick={handleHomeClick}
+                      className="hover:text-yellow-400 transition-transform duration-200"
+                    >
+                      {item.name}
+                    </button>
                   </li>
                 ) : (
                   <li key={item.name}>
                     <button
                       onClick={() => scrollToSection(item.id as string)}
-                      className="hover:text-primary transition-transform duration-200"
+                      className="hover:text-yellow-400 transition-transform duration-200"
                     >
                       {item.name}
                     </button>
@@ -56,20 +80,17 @@ export default function Header() {
             </ul>
           </nav>
           <div className="flex items-center space-x-4">
-            <button>
-              <FiSearch />
-            </button>
-            <Link href="/wishlist">
-              <FiHeart />
+            <Link
+              href="https://wa.me/6281234567890"
+              target="_blank"
+              className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+            >
+              <FaWhatsapp className="text-xl" />
+              Pesan Sekarang
             </Link>
-            <Link href="/cart" className="relative">
-              <FiShoppingBag />
-              <span className="absolute -top-2 -right-2 bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                2
-              </span>
-            </Link>
+            {/* Tombol Menu Mobile */}
             <button
-              className="md:hidden"
+              className="md:hidden hover:text-yellow-400"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg
@@ -91,7 +112,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* ✅ Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-md">
           <ul className="py-2">
@@ -100,11 +121,25 @@ export default function Header() {
                 <li key={item.name}>
                   <Link
                     href={item.href as string}
-                    className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
+                    className="block px-4 py-2 hover:bg-gray-100 hover:text-yellow-400 w-full text-left"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
+                </li>
+              ) : item.type === "home" ? (
+                <li key={item.name}>
+                  <button
+                    onClick={() => {
+                      handleHomeClick({
+                        preventDefault: () => {},
+                      } as React.MouseEvent);
+                      setIsMenuOpen(false);
+                    }}
+                    className="block px-4 py-2 hover:bg-gray-100 hover:text-yellow-400 w-full text-left"
+                  >
+                    {item.name}
+                  </button>
                 </li>
               ) : (
                 <li key={item.name}>
@@ -113,7 +148,7 @@ export default function Header() {
                       scrollToSection(item.id as string);
                       setIsMenuOpen(false);
                     }}
-                    className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
+                    className="block px-4 py-2 hover:bg-gray-100 hover:text-yellow-400 w-full text-left"
                   >
                     {item.name}
                   </button>

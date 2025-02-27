@@ -36,18 +36,23 @@ export default function ProductGrid({
       }
       if (filters.Price && filters.Price.length > 0) {
         const inPriceRange = filters.Price.some((range) => {
-          if (range === "Under Rp50.000" && product.price < 50000) return true;
+          const finalPrice = product.discountedPrice ?? product.price; // Gunakan harga diskon jika ada
+
+          if (range === "Under Rp50.000" && finalPrice < 50000) return true;
           if (
             range === "Rp50.000 - Rp100.000" &&
-            product.price >= 50000 &&
-            product.price <= 100000
+            finalPrice >= 50000 &&
+            finalPrice <= 100000
           )
             return true;
-          if (range === "Over Rp100.000" && product.price > 100000) return true;
+          if (range === "Over Rp100.000" && finalPrice > 100000) return true;
+
           return false;
         });
+
         if (!inPriceRange) return false;
       }
+
       return true;
     });
 

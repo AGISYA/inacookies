@@ -102,13 +102,13 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
   const prices = ["Under Rp50.000", "Rp50.000 - Rp100.000", "Over Rp100.000"];
 
   return (
-    <div className="w-64 p-4 border rounded">
+    <div className="w-64 p-6 border rounded space-y-4">
       <Accordion type="single" collapsible>
         <AccordionItem value="categories">
           <AccordionTrigger>Categories</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className="space-y-3">
             {categories.map((category) => (
-              <div key={category} className="flex items-center space-x-2">
+              <div key={category} className="flex items-center space-x-3">
                 <Checkbox
                   id={`category-${category}`}
                   checked={categoryFilters.includes(category)}
@@ -116,7 +116,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
                 />
                 <label
                   htmlFor={`category-${category}`}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-sm font-medium"
                 >
                   {category}
                 </label>
@@ -126,9 +126,9 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
         </AccordionItem>
         <AccordionItem value="flavors">
           <AccordionTrigger>Flavors</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className="space-y-3">
             {flavors.map((flavor) => (
-              <div key={flavor} className="flex items-center space-x-2">
+              <div key={flavor} className="flex items-center space-x-3">
                 <Checkbox
                   id={`flavor-${flavor}`}
                   checked={flavorFilters.includes(flavor)}
@@ -136,7 +136,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
                 />
                 <label
                   htmlFor={`flavor-${flavor}`}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-sm font-medium"
                 >
                   {flavor}
                 </label>
@@ -146,9 +146,9 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
         </AccordionItem>
         <AccordionItem value="price">
           <AccordionTrigger>Price</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className="space-y-3">
             {prices.map((price) => (
-              <div key={price} className="flex items-center space-x-2">
+              <div key={price} className="flex items-center space-x-3">
                 <Checkbox
                   id={`price-${price}`}
                   checked={priceFilters.includes(price)}
@@ -156,7 +156,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
                 />
                 <label
                   htmlFor={`price-${price}`}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-sm font-medium"
                 >
                   {price}
                 </label>
@@ -167,13 +167,14 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
         <AccordionItem value="price-range">
           <AccordionTrigger>Price Range</AccordionTrigger>
           <AccordionContent>
-            <div className="flex space-x-2">
+            <div className="flex space-x-4">
               <Input
                 type="number"
                 name="min"
                 placeholder="Min"
                 value={priceRange.min}
                 onChange={handlePriceChange}
+                className="p-2"
               />
               <Input
                 type="number"
@@ -181,6 +182,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
                 placeholder="Max"
                 value={priceRange.max}
                 onChange={handlePriceChange}
+                className="p-2"
               />
             </div>
           </AccordionContent>

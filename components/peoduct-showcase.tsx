@@ -89,10 +89,10 @@ export default function ProductShowcase() {
         </div>
 
         <div className="relative">
-          <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full p-4 sm:p-5 text-lg sm:text-xl z-10 hover:bg-black/50 transition">
+          <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-yellow-400 rounded-full p-4 sm:p-5 text-lg sm:text-xl z-10 hover:bg-black/50 transition">
             <FaChevronLeft />
           </button>
-          <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full p-4 sm:p-5 text-lg sm:text-xl z-10 hover:bg-black/50 transition">
+          <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-yellow-400 rounded-full p-4 sm:p-5 text-lg sm:text-xl z-10 hover:bg-black/50 transition">
             <FaChevronRight />
           </button>
 

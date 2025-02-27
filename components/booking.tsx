@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
+
 const PesanSekarang = () => {
   return (
     <div
@@ -14,15 +17,14 @@ const PesanSekarang = () => {
           Satu Ina Cookies <br /> Untuk Seribu Kebersamaan <br /> Bersama Orang
           Tercinta
         </h1>
-        <a
-          href="https://wa.me/081234567890"
+        <Link
+          href="https://wa.me/6281234567890"
           target="_blank"
-          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-600 transition duration-300"
         >
-          <button className="bg-red-600 text-lg text-white py-3 px-12 rounded-full uppercase font-semibold shadow-md transition-transform transform hover:scale-105 hover:bg-red-500">
-            Pesan Sekarang
-          </button>
-        </a>
+          <FaWhatsapp className="text-2xl" />
+          <span className="text-lg font-medium">Pesan Sekarang</span>
+        </Link>
       </div>
     </div>
   );

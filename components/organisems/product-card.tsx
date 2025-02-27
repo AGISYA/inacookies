@@ -13,7 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
-import { Product } from "@/lib/products";
+import type { Product } from "@/lib/products";
 
 type ProductCardProps = {
   product: Product;
@@ -24,7 +24,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { toast } = useToast();
 
   const handleAddToCart = () => {
-    // Here you would typically dispatch an action to add the item to the cart
     toast({
       title: "Added to cart",
       description: `${product.name} has been added to your cart.`,
@@ -68,11 +67,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <Eye size={20} />
               </Button>
             </DialogTrigger>
-            <DialogContent className="bg-white text-black">
+            <DialogContent>
               <DialogHeader>
                 <DialogTitle>{product.name}</DialogTitle>
                 <DialogDescription>
-                  <div className="flex bg-white text-black flex-col md:flex-row gap-4">
+                  <div className="flex flex-col md:flex-row gap-4">
                     <Image
                       src={product.image || "/placeholder.svg"}
                       alt={product.name}
@@ -80,10 +79,27 @@ export default function ProductCard({ product }: ProductCardProps) {
                       height={350}
                       className="w-full md:w-1/2 h-auto"
                     />
-                    <div className="md:mt-10">
-                      <p className="text-lg font-bold mb-2">
-                        Rp {product.price.toLocaleString()}
-                      </p>
+                    <div>
+                      {product.discountedPrice ? (
+                        <>
+                          <p className="text-lg font-bold mb-2">
+                            Rp {product.discountedPrice.toLocaleString()}
+                            <span className="text-sm text-gray-500 line-through ml-2">
+                              Rp {product.price.toLocaleString()}
+                            </span>
+                          </p>
+                          <p className="text-sm text-green-600 mb-2">
+                            Save Rp{" "}
+                            {(
+                              product.price - product.discountedPrice
+                            ).toLocaleString()}
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-lg font-bold mb-2">
+                          Rp {product.price.toLocaleString()}
+                        </p>
+                      )}
                       <p className="mb-2">Category: {product.category}</p>
                       <p className="mb-2">Flavor: {product.flavor}</p>
                       <Button onClick={handleAddToCart}>Add to Cart</Button>
@@ -97,9 +113,29 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
       <div className="p-4">
         <h3 className="text-sm font-semibold mb-2">{product.name}</h3>
-        <p className="text-primary font-bold">
-          Rp {product.price.toLocaleString()}
-        </p>
+        {product.discountedPrice ? (
+          <div className="flex flex-col items-start">
+            <p className="text-primary font-bold text-lg">
+              Rp {product.discountedPrice.toLocaleString()}
+            </p>
+            <div className="flex items-center gap-2">
+              <p className="text-sm text-gray-500 line-through">
+                Rp {product.price.toLocaleString()}
+              </p>
+              <p className="text-sm text-green-600">
+                -
+                {Math.round(
+                  (1 - product.discountedPrice / product.price) * 100
+                )}
+                %
+              </p>
+            </div>
+          </div>
+        ) : (
+          <p className="text-primary font-bold text-lg">
+            Rp {product.price.toLocaleString()}
+          </p>
+        )}
       </div>
     </div>
   );
