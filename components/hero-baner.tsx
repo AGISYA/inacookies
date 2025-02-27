@@ -17,7 +17,7 @@ const images = [
 
 const Carousel = () => {
   return (
-    <div className="relative w-full h-[700px] mx-auto">
+    <div className="relative w-full h-[700px] mx-auto md:mt-14 mt-16">
       {/* Tombol Navigasi */}
       <button className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 bg-yellow-500 text-white rounded-full p-4 z-[100] hover:bg-yellow-600 transition">
         <FaChevronLeft />

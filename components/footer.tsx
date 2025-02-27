@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { FaInstagram, FaTiktok, FaFacebookF } from "react-icons/fa";
 
 export default function Footer() {
@@ -13,10 +14,16 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-gray-900 text-white py-10">
+    <footer id="contact" className="bg-gray-200 text-black py-10">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-2xl font-bold">INACOOKIES 24 JAM</h2>
-        <p className="text-sm text-gray-300 mt-2 max-w-md mx-auto">
+        <Image
+          src="/images/Salinan InaCookies_Logo_27102022-01.png"
+          alt="INACOOKIES Logo"
+          width={150}
+          height={48}
+          className="mx-auto"
+        />
+        <p className="text-sm text-gray-900 mt-2 max-w-md mx-auto">
           Hubungi kami untuk informasi lebih lanjut!
         </p>
 
@@ -43,7 +50,7 @@ export default function Footer() {
 
         {/* Ikuti Kami */}
         <div className="mt-6">
-          <p className="text-gray-400 text-sm">Ikuti Kami</p>
+          <p className="text-gray-900 text-sm">Ikuti Kami</p>
           <div className="flex justify-center mt-3 space-x-4">
             <Link href="https://www.instagram.com" target="_blank">
               <FaInstagram className="text-xl hover:text-primary transition duration-300" />

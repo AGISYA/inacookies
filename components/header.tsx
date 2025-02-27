@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,15 +36,16 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white text-black shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-white text-black shadow-md z-[150]">
       <div className="container mx-auto px-4">
         <div className="py-4 flex justify-between items-center">
-          <Link
-            href="/"
-            className="text-2xl font-bold"
-            onClick={handleHomeClick}
-          >
-            inacookies
+          <Link href="/" onClick={handleHomeClick}>
+            <Image
+              src="/images/logo-horizon-removebg-preview-29.png"
+              alt="Logo"
+              width={150}
+              height={50}
+            />
           </Link>
           <nav className="hidden md:block">
             <ul className="flex space-x-6 text-black">

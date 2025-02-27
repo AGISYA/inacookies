@@ -24,7 +24,7 @@ export default function ShopPage() {
   return (
     <div className="flex bg-white text-black flex-col min-h-screen">
       <Header />
-      <main className="flex-grow container mx-auto px-4 py-20">
+      <main className="flex-grow container mx-auto px-4 py-24">
         <div className="flex flex-col lg:flex-row gap-8">
           <FilterSidebar onFilterChange={handleFilterChange} />
           <div className="flex-1 ">
