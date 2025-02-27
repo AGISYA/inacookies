@@ -80,13 +80,14 @@ export default function Header() {
             </ul>
           </nav>
           <div className="flex items-center space-x-4">
+            {/* Tombol WhatsApp Responsif */}
             <Link
               href="https://wa.me/6281234567890"
               target="_blank"
-              className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+              className="flex items-center justify-center gap-2 bg-green-500 text-white px-3 py-2 rounded-full hover:bg-green-600 transition md:px-4 md:py-2"
             >
-              <FaWhatsapp className="text-xl" />
-              Pesan Sekarang
+              <FaWhatsapp className="text-2xl md:text-xl" />
+              <span className="hidden sm:block">Pesan Sekarang</span>
             </Link>
             {/* Tombol Menu Mobile */}
             <button
