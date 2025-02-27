@@ -1,5 +1,6 @@
 import AboutUs from "@/components/about";
 import Booking from "@/components/booking";
+import ChatBubble from "@/components/bubble-chat";
 import AdvantagesSection from "@/components/featured";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -29,6 +30,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <ChatBubble projectId={9} />
       <section id="advantages">
         <AdvantagesSection />
       </section>
