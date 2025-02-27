@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const AboutUs = () => {
   return (
@@ -12,17 +13,21 @@ const AboutUs = () => {
           Ina Cookies dibuat dengan tangan terampil, menggunakan bahan-bahan
           terbaik dan berkualitas.
         </p>
-        <img
+        <Image
           src="/images/id-11134210-7rasj-m2rk8abyfe1h7b (1).webp"
           alt="Ina Cookies"
-          className="mx-auto rounded-lg shadow-lg mb-8 w-full md:w-1/2"
+          className="mx-auto rounded-lg shadow-lg mb-8"
+          width={500} // Set the width according to your design
+          height={300} // Set the height according to your design
         />
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white shadow-lg p-6 rounded-lg">
-            <img
+            <Image
               src="/images/id-11134210-7rasi-m2rk8abyfdtv88.webp"
               alt="Sejarah Ina Cookies"
               className="w-full rounded-lg mb-4"
+              width={500} // Set the width according to your design
+              height={300} // Set the height according to your design
             />
             <h3 className="text-xl font-semibold text-gray-800 mb-4">
               Sejak 1992
@@ -33,10 +38,12 @@ const AboutUs = () => {
             </p>
           </div>
           <div className="bg-white shadow-lg p-6 rounded-lg">
-            <img
+            <Image
               src="/images/id-11134210-7rash-m4qv5j83onju24.webp"
               alt="Inovasi Berkelanjutan"
               className="w-full rounded-lg mb-4"
+              width={500} // Set the width according to your design
+              height={300} // Set the height according to your design
             />
             <h3 className="text-xl font-semibold text-gray-800 mb-4">
               Inovasi Berkelanjutan
