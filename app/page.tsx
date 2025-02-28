@@ -30,7 +30,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <ChatBubble projectId={9} />
+      <ChatBubble projectId={24} />
       <section id="advantages">
         <AdvantagesSection />
       </section>

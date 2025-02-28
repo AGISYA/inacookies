@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React, { useEffect, useRef, useState } from "react";
 import { IoLogoWhatsapp } from "react-icons/io5";
@@ -8,7 +8,6 @@ import { sendChat } from "@/services/chat";
 import { ScrollArea } from "./ui/scroll-area";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-
 
 const ChatBubble: React.FC<{ projectId: number }> = ({ projectId }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,6 +43,20 @@ const ChatBubble: React.FC<{ projectId: number }> = ({ projectId }) => {
   // Fungsi untuk menyimpan nomor telepon
   const handleSetPhoneNumber = () => {
     if (!phoneNumber.trim()) return;
+
+    // Validasi nomor telepon hanya berisi angka
+    const isValidPhoneNumber = /^\d+$/.test(phoneNumber);
+    if (!isValidPhoneNumber) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "bot",
+          text: "Nomor telepon hanya boleh berisi angka. Silakan coba lagi.",
+        },
+      ]);
+      return;
+    }
+
     setIsPhoneEntered(true);
 
     setMessages((prev) => [
@@ -94,6 +107,12 @@ const ChatBubble: React.FC<{ projectId: number }> = ({ projectId }) => {
     }
   };
 
+  // Fungsi untuk memblokir karakter yang tidak diinginkan
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ""); // Hanya mengizinkan angka
+    setPhoneNumber(value);
+  };
+
   return (
     <div className="fixed bottom-6 right-6 flex items-center space-x-4 z-50">
       {/* WhatsApp Bubble */}
@@ -120,7 +139,7 @@ const ChatBubble: React.FC<{ projectId: number }> = ({ projectId }) => {
       {isOpen && (
         <div className="fixed bottom-20 right-6 z-50 w-80 max-h-[70vh] bg-white border border-gray-300 rounded-lg shadow-lg flex flex-col transform transition-all duration-300 ease-in-out translate-y-0 opacity-100">
           <div className="p-3 bg-[#ED364D] text-white rounded-t-lg flex justify-between items-center">
-            <h2 className="text-sm font-medium">Ina Cookies AiBot</h2>
+            <h2 className="text-sm font-medium">Minna</h2>
             <button
               onClick={toggleChat}
               className="text-white focus:outline-none"
@@ -137,7 +156,7 @@ const ChatBubble: React.FC<{ projectId: number }> = ({ projectId }) => {
               <div className="flex items-start space-x-2">
                 <FaRobot size={20} className="text-gray-500 flex-shrink-0" />
                 <div className="px-2 py-2 rounded-lg max-w-xs text-sm bg-gray-200 text-gray-900">
-                  Halo! Saya Ina Cookies Chatbot. Silakan masukkan nomor telepon
+                  Halo! Saya Minna. Silakan masukkan nomor telepon
                   Anda terlebih dahulu 📞. 
                 </div>
               </div>
@@ -188,7 +207,7 @@ const ChatBubble: React.FC<{ projectId: number }> = ({ projectId }) => {
                   type="text"
                   className="flex-1 px-3 py-2 text-gray-800 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5a3818]"
                   value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  onChange={handlePhoneNumberChange}
                   onKeyDown={handleKeyPress}
                   placeholder="Masukan nomor telepon anda..."
                 />
@@ -234,5 +253,3 @@ const ChatBubble: React.FC<{ projectId: number }> = ({ projectId }) => {
 };
 
 export default ChatBubble;
-
-
