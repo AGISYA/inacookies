@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import HeroBanner from "@/components/hero-baner";
 import ImageSection from "@/components/images-section";
-import ProductShowcase from "@/components/peoduct-showcase";
+import ProductShowcase from "@/components/product-showcase";
 import Link from "next/link";
 
 export default function Home() {

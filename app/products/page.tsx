@@ -5,7 +5,7 @@ import Header from "@/components/header";
 import FilterSidebar, { Filters } from "@/components/organisems/filter-sidebar";
 import Newsletter from "@/components/organisems/newsletter";
 import ProductGrid from "@/components/organisems/product-grid";
-import ProductShowcase from "@/components/peoduct-showcase";
+import ProductShowcase from "@/components/product-showcase";
 import { useState } from "react";
 
 export default function ShopPage() {
