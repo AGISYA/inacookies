@@ -32,10 +32,10 @@ export default function ShopPage() {
               filters={filters}
               currentPage={currentPage}
               onPageChange={handlePageChange}
-            />
+            />{" "}
+            <ProductShowcase />
           </div>
         </div>
-        <ProductShowcase />
       </main>
       <Newsletter />
       <Footer />

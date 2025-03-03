@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ShoppingCart, Heart, Eye } from "lucide-react";
+import { Heart, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -22,13 +22,6 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const { toast } = useToast();
-
-  const handleAddToCart = () => {
-    toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
-    });
-  };
 
   const handleToggleWishlist = () => {
     setIsWishlisted(!isWishlisted);
@@ -51,9 +44,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           className="w-full h-auto"
         />
         <div className="absolute bottom-2 right-2 flex gap-2">
-          <Button size="icon" variant="secondary" onClick={handleAddToCart}>
-            <ShoppingCart size={20} />
-          </Button>
           <Button
             size="icon"
             variant="secondary"
@@ -102,7 +92,6 @@ export default function ProductCard({ product }: ProductCardProps) {
                       )}
                       <p className="mb-2">Category: {product.category}</p>
                       <p className="mb-2">Flavor: {product.flavor}</p>
-                      <Button onClick={handleAddToCart}>Add to Cart</Button>
                     </div>
                   </div>
                 </DialogDescription>
